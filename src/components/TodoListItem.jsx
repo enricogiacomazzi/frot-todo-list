@@ -1,19 +1,20 @@
+import clsx from 'clsx';
+import { MyButton } from './MyButton';
 
 
-
-export const TodoListItem = () => {
+export const TodoListItem = ({todo, toggleTodo, deleteTodo}) => {
 
     return (
-        <li key={t.id}>
-            <span className={clsx('todo', {'done': t.done})}>{t.text}</span>
+        <li>
+            <span className={clsx('todo', {'done': todo.done})}>{todo.text}</span>
             <MyButton 
                 level={4} 
                 icon="fa-trash" 
-                clickHandler={() => deleteTodo(t)} 
+                clickHandler={deleteTodo} 
             />
             <MyButton 
-                icon={ t.done ? 'fa-times' : 'fa-check'} 
-                clickHandler={() => toggleTodo(t)} 
+                icon={ todo.done ? 'fa-times' : 'fa-check'} 
+                clickHandler={toggleTodo} 
             />
         </li>
     )

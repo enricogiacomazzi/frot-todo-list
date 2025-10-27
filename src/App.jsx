@@ -2,7 +2,8 @@ import style from './App.module.css';
 import { useState } from 'react';
 import {produce} from 'immer';
 import clsx from 'clsx';
-import { MyButton } from './components/MyButton';
+
+import { TodoListItem } from './components/TodoListItem';
 
 
 const initialState = [
@@ -30,18 +31,12 @@ function App() {
   return (
     <>
       <ul>
-        {todos.map(t => <li key={t.id}>
-            <span className={clsx('todo', {'done': t.done})}>{t.text}</span>
-            <MyButton 
-              level={4} 
-              icon="fa-trash" 
-              clickHandler={() => deleteTodo(t)} 
-            />
-            <MyButton 
-              icon={ t.done ? 'fa-times' : 'fa-check'} 
-              clickHandler={() => toggleTodo(t)} 
-            />
-          </li>)}
+        {todos.map(t => <TodoListItem 
+                          todo={t} 
+                          toggleTodo={() => toggleTodo(t)}
+                          deleteTodo={() => deleteTodo(t)}
+                          key={t.id} 
+                        />)}
       </ul>
     </>
   )
