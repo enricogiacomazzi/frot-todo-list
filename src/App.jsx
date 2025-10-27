@@ -15,24 +15,8 @@ const initialState = [
 function App() {
   const [todos, setTodos] = useState(initialState);
 
-  // console.log('todos', todos);
-
-  function tmp() {
-    setTodos(produce(todos, draft => {
-      draft.pop();
-    }));
-  }
-
   function deleteTodo(td) {
-    
     setTodos(todos.filter(t => t.id !== td.id));
-
-
-    // const index = todos.findIndex(t => t.id === td.id);
-
-    // setTodos(produce(todos, draft => {
-    //   draft.splice(index, 1);
-    // }));
   }
 
   function toggleTodo(td) {
@@ -42,22 +26,6 @@ function App() {
       draft[index].done = !draft[index].done;
     }));
   }
-
-  // function todoStyle(td) {
-  //   let res = 'todo';
-  //   if(td.done) {
-  //     res += ' done';
-  //   }
-
-  //   return res;
-  // }
-
-  // function todoStyle(td) {
-  //   // return clsx(['todo', td.done && 'done']);
-  //   // return clsx({'todo': true, 'done': td.done});
-  //   return ;
-  //   // return ['todo', td.done ? 'done' : null].filter(x => !!x).join(' ');
-  // }
 
   return (
     <>
